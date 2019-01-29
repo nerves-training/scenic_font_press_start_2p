@@ -13,9 +13,7 @@ defmodule ScenicFontPressStart2p do
   end
 
   def path() do
-    :code.priv_dir(:scenic_font_press_start_2p)
-    |> to_string()
-    |> Path.join("PressStart2P.ttf")
+    Application.app_dir(:scenic_font_press_start_2p, ["priv", "PressStart2P.ttf"])
   end
 
   def hash() do
