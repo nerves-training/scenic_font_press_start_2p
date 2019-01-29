@@ -7,7 +7,6 @@ defmodule ScenicFontPressStart2p do
   @hash hash
 
   def load() do
-    Application.ensure_all_started(:scenic)
     Scenic.Cache.File.load(path(), hash())
     Scenic.Cache.File.read(path(), hash())
     :ok
