@@ -1,10 +1,6 @@
 defmodule ScenicFontPressStart2p do
-
-  {:ok, hash} =
-    Application.app_dir(:scenic_font_press_start_2p, ["priv", "PressStart2P.ttf"])
-    |> Scenic.Cache.Hash.file(:sha)
-
-  @hash hash
+  @hash Application.app_dir(:scenic_font_press_start_2p, ["priv", "PressStart2P.ttf"])
+        |> Scenic.Cache.Hash.file!(:sha)
 
   def load() do
     Scenic.Cache.File.load(path(), hash())
