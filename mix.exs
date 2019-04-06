@@ -21,7 +21,8 @@ defmodule ScenicFontPressStart2p.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:scenic, "~> 0.9"}
+      {:scenic, "~> 0.10"},
+      {:truetype_metrics, "~> 0.3"}
     ]
   end
 end
