@@ -1,8 +1,9 @@
 defmodule ScenicFontPressStart2p do
+  # See https://github.com/boydm/scenic/blob/master/guides/custom_fonts.md
   @font_hash "eLcVQnSbL2kg9g_ix0_oVzgoTcuc0mp_9qZCxU04Rws"
-  @font_metrics_hash  :code.priv_dir(:scenic_font_press_start_2p)
-    |> Path.join("PressStart2P.ttf.metrics")
-    |> Scenic.Cache.Support.Hash.file!(:sha)
+  @font_metrics_hash :code.priv_dir(:scenic_font_press_start_2p)
+                     |> Path.join("PressStart2P.ttf.metrics")
+                     |> Scenic.Cache.Support.Hash.file!(:sha)
 
   @moduledoc """
   Press Start 2P font loader
@@ -22,15 +23,19 @@ defmodule ScenicFontPressStart2p do
     :ok
   end
 
+  @doc """
+  Return the hash for the font for use in graphs
+  """
+  @spec hash() :: <<_::216>>
   def hash() do
     @font_metrics_hash
   end
 
-  def font_folder() do
+  defp font_folder() do
     :code.priv_dir(:scenic_font_press_start_2p) |> to_string()
   end
 
-  def font_metrics() do
+  defp font_metrics() do
     :code.priv_dir(:scenic_font_press_start_2p) |> Path.join("PressStart2P.ttf.metrics")
   end
 end
