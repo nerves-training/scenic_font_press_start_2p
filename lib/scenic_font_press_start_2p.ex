@@ -4,9 +4,21 @@ defmodule ScenicFontPressStart2p do
     |> Path.join("PressStart2P.ttf.metrics")
     |> Scenic.Cache.Support.Hash.file!(:sha)
 
-  def load() do
-    Scenic.Cache.Static.FontMetrics.load(font_metrics(), @font_metrics_hash)
-    Scenic.Cache.Static.Font.load(font_folder(), @font_hash)
+  @moduledoc """
+  Press Start 2P font loader
+  """
+
+  @doc """
+  Manually load the font
+
+  If you want Scenic to unload the font when a process dies, pass that process's pid.
+  """
+  @spec load(:global | pid()) :: :ok
+  def load(scope \\ :global) do
+    {:ok, _hash} =
+      Scenic.Cache.Static.FontMetrics.load(font_metrics(), @font_metrics_hash, scope: scope)
+
+    {:ok, _hash} = Scenic.Cache.Static.Font.load(font_folder(), @font_hash, scope: scope)
     :ok
   end
 
